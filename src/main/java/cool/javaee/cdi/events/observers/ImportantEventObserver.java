@@ -1,9 +1,9 @@
 package cool.javaee.cdi.events.observers;
 
 import cool.javaee.cdi.events.observers.qualifiers.Important;
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.event.Observes;
-import javax.inject.Named;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.event.Observes;
+import jakarta.inject.Named;
 
 /**
  * A bean with a method listening only to important messages.

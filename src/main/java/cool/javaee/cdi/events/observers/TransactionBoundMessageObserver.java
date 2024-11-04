@@ -1,10 +1,10 @@
 package cool.javaee.cdi.events.observers;
 
 import cool.javaee.cdi.events.observers.qualifiers.Transaction;
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.event.Observes;
-import javax.enterprise.event.TransactionPhase;
-import javax.inject.Named;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.event.Observes;
+import jakarta.enterprise.event.TransactionPhase;
+import jakarta.inject.Named;
 
 /**
  * Contains method that only listens to

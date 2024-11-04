@@ -2,11 +2,11 @@ package cool.javaee.cdi.events.database;
 
 import cool.javaee.cdi.events.observers.entities.Message;
 import cool.javaee.cdi.events.observers.qualifiers.Transaction;
-import javax.ejb.Stateless;
-import javax.enterprise.event.Event;
-import javax.inject.Inject;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import jakarta.ejb.Stateless;
+import jakarta.enterprise.event.Event;
+import jakarta.inject.Inject;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
 
 /**
  *

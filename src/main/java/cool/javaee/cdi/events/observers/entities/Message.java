@@ -1,9 +1,9 @@
 package cool.javaee.cdi.events.observers.entities;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import java.io.Serializable;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 
 /**
  * A database entity serves as a wrapper for the message to be persisted into

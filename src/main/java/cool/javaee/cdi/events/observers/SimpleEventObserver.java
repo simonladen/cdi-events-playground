@@ -1,8 +1,8 @@
 package cool.javaee.cdi.events.observers;
 
-import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.event.Observes;
-import javax.inject.Named;
+import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.event.Observes;
+import jakarta.inject.Named;
 
 /**
  * A class containing a method listening to all events of String type
