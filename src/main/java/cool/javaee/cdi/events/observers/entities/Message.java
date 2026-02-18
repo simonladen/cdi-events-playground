@@ -2,6 +2,7 @@ package cool.javaee.cdi.events.observers.entities;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import java.io.Serializable;
 
@@ -22,7 +23,8 @@ public class Message implements Serializable {
     }
 
     @Id
-    @GeneratedValue
+    @jakarta.persistence.TableGenerator(name = "MSG_GEN", table = "SEQUENCE_TABLE", pkColumnName = "SEQ_NAME", valueColumnName = "SEQ_COUNT", pkColumnValue = "MSG_SEQ", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.TABLE, generator = "MSG_GEN")
     private Long id;
 
     private String message;

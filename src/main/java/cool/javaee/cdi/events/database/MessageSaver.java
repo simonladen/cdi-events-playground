@@ -15,7 +15,7 @@ import jakarta.persistence.PersistenceContext;
 @Stateless
 public class MessageSaver {
 
-    @PersistenceContext
+    @PersistenceContext(unitName = "ExamplePU")
     private EntityManager em;
 
     @Inject

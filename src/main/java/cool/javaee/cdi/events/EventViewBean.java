@@ -2,19 +2,19 @@ package cool.javaee.cdi.events;
 
 import cool.javaee.cdi.events.database.MessageSaver;
 import cool.javaee.cdi.events.observers.qualifiers.Important;
-import jakarta.enterprise.context.Dependent;
-import java.io.Serializable;
-import jakarta.enterprise.context.RequestScoped;
+import jakarta.faces.view.ViewScoped;
+import jakarta.enterprise.event.Event;
 import jakarta.enterprise.util.AnnotationLiteral;
 import jakarta.inject.Inject;
 import jakarta.inject.Named;
-import jakarta.enterprise.event.Event;
+import java.io.Serializable;
 
 /**
  *
  * @author Pavel Pscheidl <pavel.junior@pscheidl.cz>
  */
-@Dependent
+@Named
+@ViewScoped
 public class EventViewBean implements Serializable {
 
     @Inject
