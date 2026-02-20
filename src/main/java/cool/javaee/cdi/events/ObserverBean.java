@@ -31,5 +31,12 @@ public class ObserverBean{
             .as(HealthCheckNotificationData.class).getEntries()
             .stream().sorted().findFirst();
         }
+        try {
+            String entry = String.format("[ObserverBean] domain=%s instance=%s subject=%s message=%s",
+                    domainName, sourceInstanceName, shortInfo, detailedMessage);
+            EventWebSocketServer.broadcast(entry);
+        } catch (Exception ex) {
+            System.out.println("[ObserverBean] failed to broadcast inbound event: " + ex.getMessage());
+        }
     }
 }

@@ -35,6 +35,7 @@ public class EventViewBean implements Serializable {
      * @param message Message to send
      */
     public void sendSimpleMessage(String message) {
+        System.out.println("[EventViewBean] Firing simple unqualified event: " + message);
         simpleMessageEvent.fire(message);
     }
 
@@ -46,6 +47,7 @@ public class EventViewBean implements Serializable {
      * @param messageMessage to send
      */
     public void sendImportantMessage(String message) {
+        System.out.println("[EventViewBean] Firing @Important qualified event: " + message);
         importantMessageEvent.fire(message);
 
     }
@@ -58,6 +60,7 @@ public class EventViewBean implements Serializable {
      * @param message Message to send
      */
     public void sendImportantMessageAlternatively(String message) {
+        System.out.println("[EventViewBean] Firing @Important qualified event (alternative selection): " + message);
         simpleMessageEvent.select(new AnnotationLiteral<Important>() {
         })
                 .fire(message);
@@ -71,6 +74,7 @@ public class EventViewBean implements Serializable {
      * @param message Message to send
      */
     public void sendMessageToTransactionEvent(String message) {
+        System.out.println("[EventViewBean] Firing @Transaction qualified event via MessageSaver: " + message);
         messageSaver.saveMessageToDatabase(message);
     }
 

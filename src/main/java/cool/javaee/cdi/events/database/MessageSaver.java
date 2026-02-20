@@ -30,10 +30,11 @@ public class MessageSaver {
      * @param message Message to persist
      */
     public void saveMessageToDatabase(String message) {
+        System.out.println("[MessageSaver] Firing @Transaction qualified event: " + message);
         transactionMessageEvent.fire(message);
-        System.out.println("Beginning persistence of message: " + message);
+        System.out.println("[MessageSaver] Beginning persistence of message: " + message);
         em.persist(new Message(message));
-        System.out.println("Message persisted.");
+        System.out.println("[MessageSaver] Message persisted.");
     }
 
 }

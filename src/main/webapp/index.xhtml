@@ -1,8 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://xmlns.jcp.org/jsf/html"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>Events playground</title>
         <ui:include src="WEB-INF/bootstrap.xhtml"/>
@@ -37,7 +38,8 @@
                                 <h:commandButton value="Fire event" action="#{eventViewBean.sendImportantMessage(importantMessage.value)}"/>
                             </h:form>
                         </div>
-                    </div></div>
+                    </div>
+                </div>
             </div>
 
             <div class="row">
@@ -62,23 +64,53 @@
                                 <h:commandButton value="Fire event" action="#{eventViewBean.sendMessageToTransactionEvent(afterTransactionMessage.value)}"/>
                             </h:form>
                         </div>
-                    </div></div>
+                    </div>
+                </div>
             </div>
 
             <div class="row">
-                <div class="col-md-6">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">Inbound events</div>
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Event messages</div>
                         <div class="panel-body">
-                            <h:form>
-                                <h:inputText id="observe" binding="#{observe}" value="Here will appear inbound events..."/>
+                            <h:form id="controls">
+                                <h:commandButton value="Clear" action="#{eventDisplayBean.clear}">
+                                    <f:ajax render="liveContainer" execute="@this" />
+                                </h:commandButton>
                             </h:form>
+                            <h:panelGroup>
+                                <h:outputText value="Recent events:" />
+                                <div id="liveContainer">
+                                    <ui:repeat value="#{eventDisplayBean.messages}" var="m">
+                                        <div style="padding:6px;border-bottom:1px solid #EEE;">#{m}</div>
+                                    </ui:repeat>
+                                </div>
+                            </h:panelGroup>
+                            <script type="text/javascript">
+                                (function(){
+                                    var wsUri = (location.protocol === 'https:' ? 'wss://' : 'ws://') + location.host + '#{request.contextPath}/events';
+                                    try {
+                                        var ws = new WebSocket(wsUri);
+                                        ws.onopen = function(){ console.log('WebSocket connected to ' + wsUri); };
+                                        ws.onmessage = function(evt){
+                                            var container = document.getElementById('liveContainer');
+                                            if(container){
+                                                var div = document.createElement('div');
+                                                div.style.padding = '6px';
+                                                div.style.borderBottom = '1px solid #EEE';
+                                                div.textContent = evt.data;
+                                                container.insertBefore(div, container.firstChild);
+                                            }
+                                        };
+                                        ws.onclose = function(){ console.log('WebSocket closed'); };
+                                    } catch(e){ console.error('WebSocket error', e); }
+                                })();
+                            </script>
                         </div>
                     </div>
                 </div>
             </div>
-            Event messages will appear in the console ...
-            
+
         </div>
     </h:body>
 </html>
