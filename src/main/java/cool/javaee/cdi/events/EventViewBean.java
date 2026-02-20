@@ -2,11 +2,11 @@ package cool.javaee.cdi.events;
 
 import cool.javaee.cdi.events.database.MessageSaver;
 import cool.javaee.cdi.events.observers.qualifiers.Important;
-import jakarta.faces.view.ViewScoped;
-import jakarta.enterprise.event.Event;
-import jakarta.enterprise.util.AnnotationLiteral;
-import jakarta.inject.Inject;
-import jakarta.inject.Named;
+import javax.faces.view.ViewScoped;
+import javax.enterprise.event.Event;
+import javax.enterprise.util.AnnotationLiteral;
+import javax.inject.Inject;
+import javax.inject.Named;
 import java.io.Serializable;
 
 /**

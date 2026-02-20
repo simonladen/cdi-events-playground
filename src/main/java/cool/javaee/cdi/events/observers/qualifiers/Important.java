@@ -1,6 +1,6 @@
 package cool.javaee.cdi.events.observers.qualifiers;
 
-import jakarta.inject.Qualifier;
+import javax.inject.Qualifier;
 import static java.lang.annotation.ElementType.FIELD;
 import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.ElementType.PARAMETER;

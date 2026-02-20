@@ -4,10 +4,10 @@ import fish.payara.micro.cdi.Inbound;
 import fish.payara.notification.eventbus.EventbusMessage;
 import fish.payara.notification.healthcheck.HealthCheckNotificationData;
 import fish.payara.notification.healthcheck.HealthCheckResultEntry;
-import jakarta.enterprise.context.Dependent;
-import jakarta.enterprise.context.RequestScoped;
-import jakarta.enterprise.event.Observes;
-import jakarta.inject.Named;
+import javax.enterprise.context.Dependent;
+import javax.enterprise.context.RequestScoped;
+import javax.enterprise.event.Observes;
+import javax.inject.Named;
 import java.util.Optional;
 
 
@@ -19,11 +19,11 @@ import java.util.Optional;
 public class ObserverBean{
 
     public void observe(@Observes @Inbound EventbusMessage event) {
-        var shortInfo = event.getSubject();
-        var detailedMessage = event.getMessage();
+        String shortInfo = event.getSubject();
+        Object detailedMessage = event.getMessage();
 
-        var domainName = event.getDomain();
-        var sourceInstanceName = event.getInstance();
+        String domainName = event.getDomain();
+        String sourceInstanceName = event.getInstance();
 
         System.out.println("domain = " + domainName + " - source = " + sourceInstanceName + " - short = " + shortInfo + " - details = " + detailedMessage);
         if (event.getData() instanceof HealthCheckNotificationData) {

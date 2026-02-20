@@ -1,10 +1,10 @@
 package cool.javaee.cdi.events;
 
-import jakarta.annotation.PostConstruct;
-import jakarta.ejb.Singleton;
-import jakarta.ejb.Startup;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
+import javax.annotation.PostConstruct;
+import javax.ejb.Singleton;
+import javax.ejb.Startup;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 
 /**
  * Startup singleton bean to ensure database schema is initialized.
