@@ -10,10 +10,12 @@
     <name>cdi-events-sample</name>
 
     <properties>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
         <failOnMissingWebXml>false</failOnMissingWebXml>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>10</maven.compiler.source>
+        <maven.compiler.target>10</maven.compiler.target>
+        <maven.compiler.release>10</maven.compiler.release>
+        <jakarta.api.version>10.0.0</jakarta.api.version>
     </properties>
 
     <dependencyManagement>
@@ -30,7 +32,7 @@
         <dependency>
             <groupId>jakarta.platform</groupId>
             <artifactId>jakarta.jakartaee-api</artifactId>
-            <version>11.0.0</version>
+            <version>${jakarta.api.version}</version>
             <type>jar</type>
             <scope>provided</scope>
         </dependency>
@@ -48,9 +50,9 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.11.0</version>
                 <configuration>
-                    <source>21</source>
-                    <target>21</target>
-                    <release>21</release>
+                    <source>${maven.compiler.source}</source>
+                    <target>${maven.compiler.target}</target>
+                    <release>${maven.compiler.release}</release>
                 </configuration>
             </plugin>
             <plugin>
@@ -72,5 +74,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
